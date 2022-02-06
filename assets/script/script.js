@@ -72,7 +72,7 @@ function getGeo(cityName) {
 // getGeo("Atlanta");
 
 // Parse geocoding API results
-{/* <option value="New York"> */ }
+/* <option value="New York"> */ 
 function renderCityResults(geoCodingJSON) {
     for (let i = 0; i < geoCodingJSON.length; i++) {
 
@@ -80,7 +80,36 @@ function renderCityResults(geoCodingJSON) {
             `<option data-lat="${geoCodingJSON[i].lat}" data-lon="${geoCodingJSON[i].lon}" value="${geoCodingJSON[i].name}, ${geoCodingJSON[i].state}, ${geoCodingJSON[i].country}">`
         )
     }
+}
 
+function renderWeatherResults(weatherJSON) {
+    //current day
+
+    // weatherJSON.current.weather[0].icon
+    $("#currentcardheader").text($('#citylist').val());
+    $("#currentcardheader").append (
+        `<div id="icon"><img id="currentwicon" src="" alt=""></div>`
+    )
+    let iconurl = "http://openweathermap.org/img/w/" + weatherJSON.current.weather[0].icon + ".png";
+    $('#currentwicon').attr('src', iconurl);
+    $("#currenttemp").text("Temp: " + weatherJSON.current.temp);
+    $("#currentwind").text("Wind: " + weatherJSON.current.wind_speed);
+    $("#currenthumidity").text("Humidity: " + weatherJSON.current.humidity);
+    $("#currentuvi").text("uvi: " + weatherJSON.current.uvi);
+
+    // weatherJSON.current.temp
+    // weatherJSON.current.wind_speed
+    // weatherJSON.current.humidity
+    // weatherJSON.current.uvi
+
+    //next 5 days, starting from index 1 of daily
+    // data.daily[1].weather[0].icon
+    // data.daily[1].temp.min
+    // data.daily[1].temp.max
+    // data.daily[1].wind_speed
+    // data.daily[1].humidity
+    // data.daily[1].uvi
+    
 }
 // Event Lisener on input field selected
 $("#citylist").on("input", function (event) {
@@ -121,7 +150,7 @@ searchBtn.addEventListener("click", function (event) {
 
 // Get Weather
 function getWeather(lat, lon) {
-    let requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,daily&appid=9423c300333017676b7d7fdebf4d0575`;
+    let requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=imperial&appid=9423c300333017676b7d7fdebf4d0575`;
     fetch(requestUrl)
         .then(function (response) {
             if (response.ok) {
@@ -135,7 +164,7 @@ function getWeather(lat, lon) {
                 alert("We ran into some issues, please contact the developer at zhangxuyang.chn@gmail.com");
             } else {
                 console.log(data);
-
+                renderWeatherResults(data);
             }
         })
 }
