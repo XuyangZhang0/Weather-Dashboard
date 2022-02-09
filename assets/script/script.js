@@ -184,8 +184,9 @@ function checkUVIClass(uvivalue) {
 $("#recentSearchBtnGroup").on("click", function (event) {
     if (event.target.tagName == "BUTTON") {
         $('#citylist').val(event.target.textContent);
-        checkExists($('#citylist').val());
-        getWeather(event.target.dataset.lat, event.target.dataset.lon);
+        lat = event.target.dataset.lat;
+        lon = event.target.dataset.lon;
+        getWeather(lat, lon);
     }
 })
 
