@@ -9,7 +9,7 @@ let cityInputEl = $("#citylist")[0];
 
 // Get Coordinates
 function getGeo(cityName) {
-    let requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=9423c300333017676b7d7fdebf4d0575`;
+    let requestUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=9423c300333017676b7d7fdebf4d0575`;
     fetch(requestUrl)
         .then(function (response) {
             if (response.ok) {
