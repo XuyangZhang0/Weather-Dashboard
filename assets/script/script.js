@@ -3,9 +3,10 @@ let lat = "";
 let lon = "";
 let recentSearch = [];
 let tempUnit = "°F";
-let windUnit = "mph ";
+let windUnit = "mph";
 let searchBtn = $("#searchBtn")[0];
 let cityInputEl = $("#citylist")[0];
+let units = "imperial";
 
 // Get Coordinates
 function getGeo(cityName) {
@@ -29,7 +30,7 @@ function getGeo(cityName) {
 
 // Get Weather data from open weather API by lat, lon
 function getWeather(lat, lon) {
-    let requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=imperial&appid=9423c300333017676b7d7fdebf4d0575`;
+    let requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=${units}&appid=9423c300333017676b7d7fdebf4d0575`;
     fetch(requestUrl)
         .then(function (response) {
             if (response.ok) {
@@ -189,6 +190,23 @@ $("#recentSearchBtnGroup").on("click", function (event) {
         getWeather(lat, lon);
     }
 })
+
+$("#unittoggle").on("click",function () {
+if(!document.getElementById("unittoggle").checked){
+    // alert("switched to metric");
+    tempUnit ="°C";
+    windUnit ="m/s";
+    units = "metric"
+    getWeather(lat,lon);
+} else {
+    // alert("switched to imperial");
+    tempUnit ="°F";
+    windUnit ="mph";
+    units = "imperial"
+    getWeather(lat,lon);
+}
+})
+
 
 
 loadRecentSearch();
