@@ -12,9 +12,8 @@
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
-
 <body>
-  <header class="bg-primary text-center">
+  <header class="bg-primary text-center" id="siteheader">
     <h1>
       Weather Dashboard
     </h1>
@@ -25,105 +24,37 @@
         <form class="bg-white my-4 d-flex flex-column justify-content-center">
           <legend>Search for a City</legend>
           <div class="form-group">
-            <!-- <label for="searchterm"></label> -->
-            <!-- <input type="searchterm" class="form-control" id="searchcity" placeholder="Example: San Diego"> -->
-            <!-- <label for="exampleDataList" class="form-label">Datalist example</label> -->
             <input class="form-control" list="citylistOptions" id="citylist" placeholder="Type to search...">
             <datalist id="citylistOptions">
-              <!-- <option value="San Francisco">
-              <option value="New York">
-              <option value="Seattle">
-              <option value="Los Angeles">
-              <option value="Chicago"> -->
+
             </datalist>
           </div>
           <button type="submit" class="btn btn-primary" id="searchBtn">Search</button>
         </form>
         <hr>
         <div class="btn-group-vertical rounded d-flex justify-content-center" id="recentSearchBtnGroup" role="group">
-          <!-- <button type="button" class="btn btn-secondary my-1 rounded">Atlanta</button>
-          <button type="button" class="btn btn-secondary my-1 rounded">Austin</button> -->
         </div>
       </div>
       <div class="col-9">
-        <div class="card">
+        <div class="card weathercard">
           <div class="card-header border-0 bg-white" id="currentcardheader">
-            Atlanta (3/30/2021)
-            <!-- <div id="icon"><img id="currentwicon" src="" alt=""></div> -->
           </div>
-          <ul class="list-group list-group-flush border-0">
-            <li class="list-group-item border-0" id="currenttemp">Temp:74.01</li>
-            <li class="list-group-item border-0" id="currentwind">Wind:6.67MPH</li>
-            <li class="list-group-item border-0" id="currenthumidity">Humidity:46%</li>
-            <li class="list-group-item border-0" id="currentuvi">UV Index: 0.47</li>
-          </ul>
+          <p>Temp: <span id="currenttemp"></span></p>
+          <p>Wind: <span id="currentwind"></span></p>
+          <p>Humidity: <span id="currenthumidity"></span></p>
+          <p>UV Index: <span id="currentuvi"></span></p>
         </div>
         <hr>
         <div class="card border-0 bg-white">
-          <div class="card-header border-0 bg-white">
+          <div class="card-header border-0 bg-white" id="fivedatyforcastheader">
             5 day forecast
           </div>
-          <ul class="list-group list-group-flush d-flex flex-row">
-            <div class="card m-1">
-              <div class="card-header border-0 bg-primary">
-                Atlanta (3/31/2021)
-              </div>
-              <ul class="list-group list-group-flush bg-primary">
-                <li class="list-group-item bg-primary border-0">temp:74.01</li>
-                <li class="list-group-item border-0">Wind:6.67MPH</li>
-                <li class="list-group-item border-0">Humidity:46%</li>
-                <li class="list-group-item border-0">UV Index: 0.47</li>
-              </ul>
-            </div>
-            <div class="card m-1">
-              <div class="card-header">
-                Atlanta (4/1/2021)
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item border-0">temp:74.01</li>
-                <li class="list-group-item border-0">Wind:6.67MPH</li>
-                <li class="list-group-item border-0">Humidity:46%</li>
-                <li class="list-group-item border-0">UV Index: 0.47</li>
-              </ul>
-            </div>
-            <div class="card m-1">
-              <div class="card-header">
-                Atlanta (4/2/2021)
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item border-0">temp:74.01</li>
-                <li class="list-group-item border-0">Wind:6.67MPH</li>
-                <li class="list-group-item border-0">Humidity:46%</li>
-                <li class="list-group-item border-0">UV Index: 0.47</li>
-              </ul>
-            </div>
-            <div class="card m-1">
-              <div class="card-header">
-                Atlanta (4/3/2021)
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item border-0">temp:74.01</li>
-                <li class="list-group-item border-0">Wind:6.67MPH</li>
-                <li class="list-group-item border-0">Humidity:46%</li>
-                <li class="list-group-item border-0">UV Index: 0.47</li>
-              </ul>
-            </div>
-            <div class="card m-1">
-              <div class="card-header">
-                Atlanta (4/4/2021)
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item border-0">temp:74.01</li>
-                <li class="list-group-item border-0">Wind:6.67MPH</li>
-                <li class="list-group-item border-0">Humidity:46%</li>
-                <li class="list-group-item border-0">UV Index: 0.47</li>
-              </ul>
-            </div>
-          </ul>
+          <div class="d-flex flex-row justify-content-between" id="fivedayforecast">
+            
+          </div>
         </div>
       </div>
     </div>
-
   </div>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

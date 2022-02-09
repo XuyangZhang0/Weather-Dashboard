@@ -1,0 +1,51 @@
+.uv-favorable {
+    background-color: green;
+    border-radius: 5px;
+    color: white;
+}
+
+.uv-moderate {
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+}
+
+.uv-severe {
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+}
+
+#siteheader {
+    background: rgb(2,0,36);
+    background: linear-gradient(135deg, rgba(2,0,36,1) 0%, rgba(43,69,210,1) 45%);
+}
+
+p {
+    text-align: center;
+}
+
+#currentcardheader {
+    font-size: 24px;
+    text-align: center;
+}
+
+.dailycard {
+    background: rgb(2,0,36);
+    background: linear-gradient(135deg, rgba(2,0,36,1) 0%, rgba(43,69,210,1) 45%);
+    color: white;
+    border-radius: 10px;
+    }
+
+#fivedatyforcastheader {
+    text-align: center;
+    font-size: 24px;
+}
+
+.card-header {
+    font-weight: 700;
+}
+
+h1 {
+    color: white;
+}
