@@ -156,7 +156,7 @@ function renderFiveDayForecast(data) {
     for (let i = 1; i <= 5; i++) {
         let iconurl = "http://openweathermap.org/img/w/" + data.daily[i].weather[0].icon + ".png";
         $("#fivedayforecast").append(
-            `<div class="dailycard col-2.4 col-sm-6">
+            `<div class="dailycard col-2.4">
             <div class="card-header">
             ${moment().add(i, 'days').format("MM/DD/YY")}
             <span id="icon"><img id="wicon${i}" src="${iconurl}" alt=""></span>
